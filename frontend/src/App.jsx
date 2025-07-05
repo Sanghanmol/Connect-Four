@@ -3,7 +3,11 @@ import { io } from 'socket.io-client';
 import GameBoard from './GameBoard.jsx';
 import Leaderboard from './Leaderboard.jsx';
 
-const socket = io('http://localhost:8080');
+const socket = io(
+  import.meta.env.PROD
+    ? window.location.origin
+    : 'http://localhost:8080'
+);
 
 function App() {
   const [username, setUsername] = useState('');
@@ -62,7 +66,7 @@ function App() {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container py-5">
       <h2 className="text-center mb-4 fw-bold text-primary display-5">
         🎯 Connect Four
       </h2>

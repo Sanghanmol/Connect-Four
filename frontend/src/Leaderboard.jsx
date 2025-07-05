@@ -5,7 +5,11 @@ function Leaderboard({ refreshTrigger }) {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch('http://localhost:8080/leaderboard')
+      fetch(
+        import.meta.env.PROD
+          ? '/leaderboard'
+          : 'http://localhost:8080/leaderboard'
+      )
         .then((res) => res.json())
         .then(setData)
         .catch(console.error);
@@ -15,17 +19,17 @@ function Leaderboard({ refreshTrigger }) {
   }, [refreshTrigger]);
 
   return (
-    <div className="card shadow p-3" 
-    style={{
-        width: '100%',            
+    <div className="card shadow p-3"
+      style={{
+        width: '100%',
         margin: '0 auto',
         border: '1px solid #ccc',
         borderRadius: '12px',
       }}
-      >
+    >
       <h5 className="mb-3 text-center text-danger">🏆 Leaderboard</h5>
-      
-      <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
+
+      <div style={{ maxHeight: '150px', overflowY: 'auto' }}>
         <table className="table table-striped table-sm mb-0">
           <thead className="sticky-top bg-white">
             <tr>

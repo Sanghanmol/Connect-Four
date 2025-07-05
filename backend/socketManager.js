@@ -1,7 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const Game = require('./models/Game');
 const Leaderboard = require('./models/Leaderboard');
-const sendAnalytics = require('./kafka');
 
 let waitingPlayer = null;
 const activeGames = {};
@@ -100,7 +99,6 @@ function socketHandler(io) {
       const duration = Date.now() - game.startTime;
       await updateLeaderboard(winnerName);
       await Game.create({ players: players.map(p => p.username), board, winner: winnerName, duration });
-      await sendAnalytics({ type: 'game_over', players: players.map(p => p.username), winner: winnerName, duration });
       delete activeGames[gameId];
     } else {
       game.turn = 1 - turn;
