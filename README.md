@@ -52,7 +52,7 @@ This project brings the classic Connect Four game online with the power of WebSo
 ## 🚀 Installation
 
 ### 1. Clone the Repo
-git clone https://github.com/yourusername/connect-four.git
+git clone https://github.com/Sanghanmol/connect-four.git
 
 ### 2. Install dependencies:
 npm install
@@ -79,6 +79,8 @@ npm start
 
 ## 📄 License
 This project is licensed under the MIT License.
+
+---
 
 ## 🙌 Acknowledgements
 Built with ❤️ using MERN Stack, WebSockets, and a passion for multiplayer games.
